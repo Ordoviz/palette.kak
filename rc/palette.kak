@@ -4,14 +4,14 @@ define-command -hidden palette-update %{
   try %{
     evaluate-commands -draft -save-regs '/DV' %{
       execute-keys '<space>;gtGb'
-      set-register / '#[0-9A-Fa-f]{6}'
+      set-register / '(?:#|rgb:)([0-9A-Fa-f]{6})'
       execute-keys 's<ret>'
       set-option window palette %val(timestamp)
       evaluate-commands -no-hooks -draft -itersel %{
         # Save description
         set-register D %val(selection_desc)
-        # Trim '#' part
-        execute-keys '<a-;>L'
+        # Select value
+        execute-keys '1s<ret>'
         # Save value
         set-register V %reg(.)
         set-option -add window palette "%reg(D)|default,rgb:%reg(V)"
