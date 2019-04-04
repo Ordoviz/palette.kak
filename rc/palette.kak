@@ -2,7 +2,7 @@ declare-option -hidden range-specs palette
 
 define-command -hidden palette-update %{
   try %{
-    evaluate-commands -draft -save-regs '/DV' %{
+    evaluate-commands -draft -save-regs '/BDF' %{
       execute-keys '<space>;gtGb'
       set-register / '(?:#|rgb:)([0-9A-Fa-f]{6})'
       execute-keys 's<ret>'
@@ -13,8 +13,9 @@ define-command -hidden palette-update %{
         # Select value
         execute-keys '1s<ret>'
         # Save value
-        set-register V %reg(.)
-        set-option -add window palette "%reg(D)|default,rgb:%reg(V)"
+        set-register B %reg(.)
+        set-register F %sh(printf '%s' "$kak_main_reg_dot" | tr '0123456789ABCDEFabcdef' 'fedcba9876543210543210')
+        set-option -add window palette "%reg(D)|rgb:%reg(F),rgb:%reg(B)"
       }
     }
   } catch %{
