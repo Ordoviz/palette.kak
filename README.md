@@ -1,33 +1,14 @@
-# Palette
+# palette.kak
 
-[![IRC][IRC Badge]][IRC]
-
-###### [Usage](#usage) | [Documentation](#commands) | [Contributing](CONTRIBUTING)
-
-> Color preview in [Kakoune].
+Color preview in [Kakoune].
 
 ## Installation
 
-### [Pathogen]
-
-``` kak
-pathogen-infect /home/user/repositories/github.com/alexherbo2/palette.kak
-```
+Add [`palette.kak`](rc/palette.kak) to your autoload or source it manually.
 
 ## Usage
 
-``` kak
-hook global WinCreate .* %{
-  palette-enable
-}
-```
-
-## Commands
-
-- `palette-enable`: Enable color preview
-- `palette-disable`: Disable color preview
+Enable color preview (enabled by default) with `palette-enable`.
+Call `palette-disable` to disable it.
 
 [Kakoune]: https://kakoune.org
-[IRC]: https://webchat.freenode.net/#kakoune
-[IRC Badge]: https://img.shields.io/badge/IRC-%23kakoune-blue.svg
-[Pathogen]: https://github.com/alexherbo2/pathogen.kak
